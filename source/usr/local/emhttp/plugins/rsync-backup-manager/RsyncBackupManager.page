@@ -1,0 +1,120 @@
+<?php
+$plugin = "rsync-backup-manager";
+$docroot = $docroot ?? $_SERVER['DOCUMENT_ROOT'] ?: '/usr/local/emhttp';
+$translations = file_exists("$docroot/webGui/include/Translations.php");
+require_once "$docroot/plugins/$plugin/include/helpers.php";
+?>
+
+Menu="Utilities"
+Title="Rsync Backup Manager"
+Icon="rsync-backup-manager.png"
+---
+<link type="text/css" rel="stylesheet" href="<?autov('/plugins/rsync-backup-manager/styles/styles.css')?>">
+<script type="text/javascript" src="<?autov('/plugins/rsync-backup-manager/scripts/script.js')?>"></script>
+
+<div class="rsync-backup-manager">
+    <!-- Add New Backup Job Button -->
+    <div class="job-controls">
+        <button type="button" onclick="addNewBackupJob()" class="btn btn-primary">Add New Backup Job</button>
+    </div>
+
+    <!-- Backup Jobs List -->
+    <div id="backup-jobs-list">
+        <!-- Jobs will be populated here via JavaScript -->
+    </div>
+
+    <!-- Add New Job Modal -->
+    <div id="addJobModal" class="modal">
+        <div class="modal-content">
+            <h4>Add New Backup Job</h4>
+            <form id="newJobForm">
+                <!-- Job Name -->
+                <div class="form-group">
+                    <label for="jobName">Job Name:</label>
+                    <input type="text" id="jobName" name="jobName" required>
+                </div>
+
+                <!-- Source Configuration -->
+                <div class="form-group">
+                    <label>Source:</label>
+                    <select id="sourceType" name="sourceType">
+                        <option value="local">Local</option>
+                        <option value="remote">Remote</option>
+                    </select>
+                    
+                    <!-- Remote settings (hidden by default) -->
+                    <div id="sourceRemoteSettings" style="display: none;">
+                        <input type="text" id="sourceHost" placeholder="IP Address">
+                        <input type="number" id="sourcePort" placeholder="SSH Port" value="22">
+                    </div>
+                    
+                    <!-- Path selector -->
+                    <div id="sourcePath">
+                        <!-- Will be populated with file picker -->
+                    </div>
+                </div>
+
+                <!-- Destination Configuration -->
+                <div class="form-group">
+                    <label>Destination:</label>
+                    <select id="destType" name="destType">
+                        <option value="local">Local</option>
+                        <option value="remote">Remote</option>
+                    </select>
+                    
+                    <!-- Remote settings (hidden by default) -->
+                    <div id="destRemoteSettings" style="display: none;">
+                        <input type="text" id="destHost" placeholder="IP Address">
+                        <input type="number" id="destPort" placeholder="SSH Port" value="22">
+                    </div>
+                    
+                    <!-- Path selector -->
+                    <div id="destPath">
+                        <!-- Will be populated with file picker -->
+                    </div>
+                </div>
+
+                <!-- Schedule Configuration -->
+                <div class="form-group">
+                    <label>Schedule:</label>
+                    <select id="scheduleType" name="scheduleType">
+                        <option value="hourly">Hourly</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="custom">Custom</option>
+                    </select>
+                    
+                    <div id="customCron" style="display: none;">
+                        <input type="text" id="cronExpression" placeholder="* * * * *">
+                        <small>Custom cron expression (min hour day month weekday)</small>
+                    </div>
+                </div>
+
+                <!-- Bandwidth Limit -->
+                <div class="form-group">
+                    <label>Bandwidth Control:</label>
+                    <div class="switch-wrapper">
+                        <input type="checkbox" id="bandwidthEnabled" name="bandwidthEnabled">
+                        <label for="bandwidthEnabled">Enable Bandwidth Limit</label>
+                    </div>
+                    
+                    <div id="bandwidthSettings" style="display: none;">
+                        <input type="number" id="bandwidthLimit" name="bandwidthLimit" min="1">
+                        <label for="bandwidthLimit">MB/s</label>
+                        <div class="tooltip">
+                            Example limits:
+                            LAN: 50-100 MB/s
+                            Internet: 1-10 MB/s depending on connection
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Create Job</button>
+                    <button type="button" class="btn btn-default" onclick="closeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

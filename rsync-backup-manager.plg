@@ -1,0 +1,48 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+<!ENTITY name "rsync-backup-manager">
+<!ENTITY author "SpaceinvaderOne">
+<!ENTITY version "2024.03.24">
+<!ENTITY md5 "">
+<!ENTITY launch "Settings/RsyncBackupManager">
+<!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
+<!ENTITY github "SpaceinvaderOne/backup-tool">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/main/&name;.plg">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.0">
+
+<CHANGES>
+###2024.03.24
+- Initial Release
+</CHANGES>
+
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
+<URL>https://raw.githubusercontent.com/&github;/main/archive/&name;-&version;.txz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+<FILE Name="&plugdir;/README.md">
+<INLINE>
+# Rsync Backup Manager
+
+This plugin provides an easy-to-use interface for managing rsync backup jobs on your Unraid server.
+
+## Features
+- Create and manage rsync backup jobs
+- Local and remote backup support
+- Scheduled backups with flexible timing options
+- Bandwidth control
+- Simple and intuitive interface
+</INLINE>
+</FILE>
+
+<!-- Post install cleanup -->
+<FILE Run="/bin/bash">
+<INLINE>
+# Remove old files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null | grep -v '&version;')
+</INLINE>
+</FILE>
+
+</PLUGIN> 

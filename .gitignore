@@ -1,0 +1,29 @@
+# Build artifacts
+*.tgz
+*.txz
+*.tar
+*.zip
+*.bak
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-*
+
+# MD5 files
+md5.txt
+
+# Logs
+*.log 

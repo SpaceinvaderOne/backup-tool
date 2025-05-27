@@ -1,0 +1,116 @@
+.rsync-backup-manager {
+    margin: 20px;
+}
+
+.job-controls {
+    margin-bottom: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.switch-wrapper input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.tooltip {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.form-actions button {
+    margin-left: 10px;
+}
+
+#backup-jobs-list {
+    margin-top: 20px;
+}
+
+.backup-job {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.backup-job h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.job-actions {
+    margin-top: 10px;
+}
+
+.job-actions button {
+    margin-right: 10px;
+}
+
+/* Bandwidth limit specific styles */
+#bandwidthSettings {
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#bandwidthLimit {
+    width: 100px !important;
+    display: inline-block;
+    margin-right: 10px;
+} 
