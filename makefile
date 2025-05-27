@@ -1,5 +1,5 @@
 PLUGIN_NAME="rsync-backup-manager"
-VERSION="2024.03.24"
+VERSION="2025.05.27"
 
 all: clean package md5
 

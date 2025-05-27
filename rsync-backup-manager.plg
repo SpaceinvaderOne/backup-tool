@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name "rsync-backup-manager">
 <!ENTITY author "SpaceinvaderOne">
-<!ENTITY version "2024.03.24">
+<!ENTITY version "2025.05.27">
 <!ENTITY md5 "">
 <!ENTITY launch "Settings/RsyncBackupManager">
 <!ENTITY plugdir "/usr/local/emhttp/plugins/&name;">
@@ -13,7 +13,7 @@
 <PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" min="6.9.0">
 
 <CHANGES>
-###2024.03.24
+###2025.05.27
 - Initial Release
 </CHANGES>
 
